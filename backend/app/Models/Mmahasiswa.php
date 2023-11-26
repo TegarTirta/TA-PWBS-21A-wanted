@@ -125,7 +125,7 @@ class Mmahasiswa extends Model
         //"$NPM" = NAMA PARAMETER
         $result = [
             "NPM" => $NPM,
-            "NAMAA" => $NAMA,
+            "NAMA" => $NAMA,
             "JURUSAN" => $JURUSAN,
             "TELEPON" => $TELEPON,
         ];
