@@ -1,0 +1,41 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+.layout
+{
+    margin: 0;
+    
+}
+
+.header{
+    display: flex;
+    background-color: rgb(170, 20, 20);
+    /* Perataan Horizontal  */
+    justify-content: start;
+    /* Perataan Vertikal */
+    align-items: center;
+    padding: 10px;
+    top: 0;
+    position: sticky;
+
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(170, 20, 20);
+    color: aliceblue;
+    font-family: 'Inconsolata', monospace;
+    font-size: 14px;
+}
+.content {
+text-align: justify;
+min-height: 750px;
+padding: 20px;
+}
+
+.content_bg{
+    background-color: silver;
+}
