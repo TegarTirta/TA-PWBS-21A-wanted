@@ -8,7 +8,7 @@ import style from "./styles/style.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "View Data Mahasiswa",
+  title:"Pendaftaran Siswa Baru",
 };
 
 export default function MainLayout({
@@ -36,5 +36,6 @@ export default function MainLayout({
         <footer className={style.footer}>&copy; 2023 | PWBL - TI 20 A</footer>
       </body>
     </html>
+    
   );
 }
