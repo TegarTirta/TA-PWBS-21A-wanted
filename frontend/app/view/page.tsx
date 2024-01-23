@@ -115,7 +115,7 @@ export default function ViewPage() {
           <img src="./images/loading.gif" alt="Loading icon" />
         </section>
 
-        <section className='text-center text-rose-700 mt-5 flex justify-center'>
+        <section className='text-center text-black mt-5 flex justify-center'>
           Mohon Tunggu
         </section>
         </section>
