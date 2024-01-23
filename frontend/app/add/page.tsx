@@ -104,9 +104,9 @@ export default function AddPage() {
           <select name="" id="cbo_jurusan" className='w-1/2 border-2 border-black
          px-3 py-1 rounded-lg outline-none focus:border-sky-500 bg-white' onChange={getDataInput}>
             <option value="">Pilih Tingkatan</option>
-            <option value="Teknologi Informasi">Sekolah Dasar</option>
-            <option value="Informatika">Sekolah Menengah Pertama</option>
-            <option value="Teknik Komputer">Sekolah Menengah Atas</option>
+            <option value="Sekolah Dasar">Sekolah Dasar</option>
+            <option value="Sekolah Menengah Pertama">Sekolah Menengah Pertama</option>
+            <option value="Sekolah Menengah Atas">Sekolah Menengah Atas</option>
           </select>
         </section>
       </section>
