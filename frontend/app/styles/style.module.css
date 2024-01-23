@@ -8,7 +8,7 @@
 .header
 {
     display: flex;
-    background-color: rgb(165, 28, 39);
+    background-color: #0071BC;
     /* perataan secara hoerizontal */
     justify-content: start;
     /* perataan vertical */
