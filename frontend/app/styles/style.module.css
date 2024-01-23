@@ -1,41 +1,47 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playpen+Sans:wght@500&display=swap');
 
 .layout
 {
     margin: 0;
-    
 }
 
-.header{
+.header
+{
     display: flex;
-    background-color: rgb(170, 20, 20);
-    /* Perataan Horizontal  */
+    background-color: rgb(165, 28, 39);
+    /* perataan secara hoerizontal */
     justify-content: start;
-    /* Perataan Vertikal */
+    /* perataan vertical */
     align-items: center;
+    min-height: 50px;
     padding: 10px;
+
     top: 0;
     position: sticky;
-
 }
 
-.footer{
+.content
+{
+    text-align: justify;
+    min-height: 750px;
+    padding: 20px;
+}
+.content_bg
+{
+    background-color: rgb(247, 242, 242);
+}
+
+.footer
+{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: rgb(170, 20, 20);
-    color: aliceblue;
-    font-family: 'Inconsolata', monospace;
-    font-size: 14px;
-}
-.content {
-text-align: justify;
-min-height: 750px;
-padding: 20px;
+    padding: 10px;
+    background-color: rgb(165, 28, 39);
+
+    font-family: 'Pacifico', cursive;
+    font-family: 'Playpen Sans', cursive;
+    font-size: 15px;
+
 }
 
-.content_bg{
-    background-color: silver;
-}
