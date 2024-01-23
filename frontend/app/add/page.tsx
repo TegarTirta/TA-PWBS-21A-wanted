@@ -71,7 +71,7 @@ export default function AddPage() {
       <section className='flex items-center mb-3'>
         {/* area label */}
         <section className='w-1/4'>
-          <label htmlFor="txt_nama">Nama Siswa</label>
+          <label htmlFor="txt_nama">Nama Lengkap Siswa</label>
         </section>
         {/* area input */}
         <section className='w-3/4'>
