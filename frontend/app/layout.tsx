@@ -42,7 +42,7 @@ export default function MainLayout({
         
 
     <div className={style.footer}>      
-      <footer>&copy; 2023 | PWBS - TI 21 A</footer>
+      <footer>&copy; 2023 | TEKNOKRAT - SEMAKIN DIDEPAN</footer>
     </div>
         </body>
 

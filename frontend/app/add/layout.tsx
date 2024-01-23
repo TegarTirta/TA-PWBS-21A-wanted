@@ -4,7 +4,7 @@ import AddPage from './page'
 
 
 export const metadata: Metadata = {
-    title: 'Tambah Data Mahasiswa',
+    title: 'Tambah Data Siswa',
   }
 
 export default function AddLayout() {

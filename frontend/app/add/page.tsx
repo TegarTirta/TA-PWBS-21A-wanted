@@ -63,7 +63,7 @@ export default function AddPage() {
         {/* area input */}
         <section className='w-3/4'>
           <input type="text" name="" id="txt_npm" className='w-1/2 border-2 border-black
-         px-3 py-1 rounded-lg outline-none focus:border-sky-500' placeholder='Isi Data NPM' onChange={getDataInput}/>
+         px-3 py-1 rounded-lg outline-none focus:border-sky-500' placeholder='Isi Data Nomor Induk Siswa' onChange={getDataInput}/>
         </section>
       </section>
 
@@ -76,7 +76,7 @@ export default function AddPage() {
         {/* area input */}
         <section className='w-3/4'>
           <input type="text" name="" id="txt_nama" className='w-1/2 border-2 border-black
-         px-3 py-1 rounded-lg outline-none focus:border-sky-500' placeholder='Isi Data Nama Mahasiswa' onChange={getDataInput}/>
+         px-3 py-1 rounded-lg outline-none focus:border-sky-500' placeholder='Isi Data Nama Siswa' onChange={getDataInput}/>
         </section>
       </section>
 
@@ -84,12 +84,12 @@ export default function AddPage() {
       <section className='flex items-center mb-2'>
         {/* area label */}
         <section className='w-1/4'>
-          <label htmlFor="txt_telepone">Telepone Siswa</label>
+          <label htmlFor="txt_telepone">Telepon Siswa</label>
         </section>
         {/* area input */}
         <section className='w-3/4'>
           <input type="text" name="" id="txt_telepone" className='w-1/2 border-2 border-black
-         px-3 py-1 rounded-lg outline-none focus:border-sky-500' placeholder='Isi Nomor Telepone' onChange={getDataInput}/>
+         px-3 py-1 rounded-lg outline-none focus:border-sky-500' placeholder='Isi Nomor Telepon' onChange={getDataInput}/>
         </section>
       </section>
 
