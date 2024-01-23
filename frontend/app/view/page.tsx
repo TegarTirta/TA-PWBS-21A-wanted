@@ -127,9 +127,9 @@ export default function ViewPage() {
         <thead>
           <tr>
             
-          <th className='w-1/6 border-2 border-black bg-gray-200 text-center h-10'>NPM</th>
+          <th className='w-1/6 border-2 border-black bg-gray-200 text-center h-10'>Nomor Induk Siswa</th>
             <th className='w-auto border-2 border-black bg-gray-200 text-center h-10'>Nama</th>
-            <th className='w-2/12 border-2 border-black bg-gray-200 text-center h-10'>Jurusan</th>
+            <th className='w-2/12 border-2 border-black bg-gray-200 text-center h-10'>Tingkatan Sekolah</th>
             <th className='w-1/5 border-2 border-black bg-gray-200 text-center h-10'>Telepone</th>
             <th className='w-2/12 border-2 border-black bg-gray-200 text-center h-10'>Aksi</th>
           </tr>
