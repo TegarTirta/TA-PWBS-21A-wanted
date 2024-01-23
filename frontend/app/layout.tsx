@@ -23,7 +23,7 @@ export default function MainLayout({
     <html lang="en">
       <head>
         {/* tambahkan favicon */}
-      <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+      <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
       {/* tambahkan cdn fontawesome */}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
       </head>
