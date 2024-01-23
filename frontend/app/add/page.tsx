@@ -71,7 +71,7 @@ export default function AddPage() {
       <section className='flex items-center mb-3'>
         {/* area label */}
         <section className='w-1/4'>
-          <label htmlFor="txt_nama">Nama Mahasiswa</label>
+          <label htmlFor="txt_nama">Nama Siswa</label>
         </section>
         {/* area input */}
         <section className='w-3/4'>
@@ -84,7 +84,7 @@ export default function AddPage() {
       <section className='flex items-center mb-2'>
         {/* area label */}
         <section className='w-1/4'>
-          <label htmlFor="txt_telepone">Telepone Mahasiswa</label>
+          <label htmlFor="txt_telepone">Telepone Siswa</label>
         </section>
         {/* area input */}
         <section className='w-3/4'>
@@ -97,16 +97,16 @@ export default function AddPage() {
       <section className='flex items-center mb-2'>
         {/* area label */}
         <section className='w-1/4'>
-          <label htmlFor="cbo_jurusan">Jurusan Mahasiswa</label>
+          <label htmlFor="cbo_jurusan">Tingkatan Sekolah</label>
         </section>
         {/* area input */}
         <section className='w-3/4'>
           <select name="" id="cbo_jurusan" className='w-1/2 border-2 border-black
          px-3 py-1 rounded-lg outline-none focus:border-sky-500 bg-white' onChange={getDataInput}>
             <option value="">Pilih Jurusan Mahasiswa</option>
-            <option value="Teknologi Informasi">Teknologi Informasi</option>
-            <option value="Informatika">Informatika</option>
-            <option value="Teknik Komputer">Teknik Komputer</option>
+            <option value="Teknologi Informasi">Sekolah Dasar</option>
+            <option value="Informatika">Sekolah Menengah Pertama</option>
+            <option value="Teknik Komputer">Sekolah Menengah Atas</option>
           </select>
         </section>
       </section>
