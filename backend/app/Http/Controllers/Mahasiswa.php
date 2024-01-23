@@ -25,121 +25,113 @@ class Mahasiswa extends Controller
         $result = $this->model->getData();
 
         //Kembalikan nilai variabel "result" ke dalam object "mahasiswa"
-        return response(["mahasiswa" => $result], http_response_code());
+        return response(["mahasiswa"=> $result], http_response_code());
     }
-
-    //Digunakan Untuk pencarian data
+    // buat sungsi untuk pencarian data
     function searchController($keyword)
     {
-        //isi nilai dari variabel "result" dari fungsi "searchData" dari model "Mmahasiswa" sesuai dengan isi parameter
+        //isi nilai dari variabel "searchData" dari fungsi "getData" dari model "keyword"
         $result = $this->model->searchData($keyword);
-
+        
         //Kembalikan nilai variabel "result" ke dalam object "mahasiswa"
-        return response(["mahasiswa" => $result], http_response_code());
+        return response(["mahasiswa"=> $result], http_response_code());
     }
-
-    //buat fungsi detail data
+    // buat fungsi detail data
     function detailController($id)
     {
-        //isi nilai dari variabel "result" dari fungsi "detailData" dari model "Mmahasiswa" sesuai dengan isi parameter "id"
+         //isi nilai dari variabel "detailhData" dari fungsi "detailData" dari model "Mmahasiswa" sesuai dengan isi parameter "id"
         $result = $this->model->detailData($id);
-
         //Kembalikan nilai variabel "result" ke dalam object "mahasiswa"
-        return response(["mahasiswa" => $result], http_response_code());
-
+        return response(["mahasiswa"=> $result], http_response_code());
     }
-
-    //buat fungsi untuk menghapus data
+    // buat fungsi untuk hapus data
     function deleteController($id)
     {
-        //cek npm tersedia atau tidak 
-        //jika data tersedia
-        if (count($this->model->detailData($id)) == 1) {
-            //Lakukan Penghapusan Data 
+        // apakah npm tersedia/tidak
+        // jika data tersedia
+        if(count($this->model->detailData($id)) == 1)
+        {
+            // lakukan penghapusan data 
+            // (panggil fungsi "deleteData" dari Mmahasiswa)
             $this->model->deleteData($id);
-
-            //Buat Status Pesan
+            // buat status dan pesan 
             $status = 1;
-            $messege = "Data Berhasil Dihapus";
-        }
-        //jika data tidak tersedia
-        else {
-            //Buat Status Pesan
+            $message = "Data Berhasil Dihapus";     
+         }
+        // jika data tidak tersedia
+        else
+        {
+             // buat status dan pesan 
             $status = 0;
-            $messege = "NPM Tidak Ditemukan!!!";
-        }
-
-        //Kembalikan nilai variabel "result" ke dalam object "mahasiswa"
-        return response(["status" => $status, "message" => $messege], http_response_code());
+            $message = "Data Gagal Dihapus ! (NPM Tidak Ditemukan)";
+        }   
+        // kembalikan nilai variabel "result" kedalam object "mahasiswa"
+    return response(["status"=> $result, "message" => $message], http_response_code());
     }
-
-    // Buat Fungsi Untuk Simpan Data
-
-    // "NPM" = Variable Array Yang Menampung Nilai Dari $req
-
-    // "$req -> NPM" = Variable Yang Dikirim Dari Front End
+    // buat fungsi untuk simpan data
     function saveController(Request $req)
     {
-        $data =
-            [
-                "NPM" => $req->NPM,
-                "NAMA" => $req->NAMA,
-                "TELEPON" => $req->TELEPON,
-                "JURUSAN" => $req->JURUSAN,
-            ];
-        $id = base64_encode(md5($req->NPM));
-
-        // Lakukan Pengecekan Apakah Data " NPM " Yang Diisi Sudah Pernah Tersimpan/Belum Di Database
-
-        // Jika Data Tersedia 
-        if (count($this->model->detailData($id)) == 1)
-        //Lakukan Penyimpanan Data 
+        // ambil data input
+        // "npm" = variabel array yang menampung nilai dari $req
+        //  "$req->npm" = variabel yang dikirim dari front end
+        $data = [
+            "npm" => $req->npm,
+            "nama" => $req->nama,
+            "telepone" => $req->telepone,
+            "jurusan" => $req->jurusan,
+            // "id" => base64_encode(md5($req->npm))
+        ];
+        $id = base64_encode(md5($req->npm));
+        // lakukan pengecekan apakah data "npm" yang diisi sudah pernah tersimpan/belum di database
+        
+        // jika detail data tersedia
+        if(count($this->model->detailData($id)) == 1)
         {
-            
-            //Buat Status Pesan
+            // buat status dan pesan
             $status = 0;
-            $messege = "NPM Tidak Ditemukan !!!";
+            $message = "Data Gagal Disimpan ! (NPM Sudah Ada !)";
         }
-        //jika data tidak tersedia
-        else {
-            //Buat Status Pesan
+        // jika data tersedia
+        else
+        {
+            // lakukan penyimpanan data
+            // (panggil fungsi "saveData" dari Mmahasiswa)
+            $this->model->saveData($data["npm"],$data["nama"],$data["telepone"],$data["jurusan"]);
+            // buat status dan pesan
             $status = 1;
-            $messege = "Data Berhasil Di Simpan ";
+            $message = "Data Berhasil Disimpan !";
         }
-        //Kembalikan nilai variabel "result" ke dalam object "mahasiswa"
-        return response(["status" => $status, "message" => $messege], http_response_code());
-
-
+        // kembalikan nilai variabel "result" kedalam object "mahasiswa"
+    return response(["status"=> $status, "message" => $message], http_response_code());
     }
-    // Buat Fungsi Untuk Ubah Data
-    function updateController(Request $req, $id)
+    // buat fungsi untuk ubah data
+    function updateController(Request $req ,$id)
     {
-        //Ambil Data Input
-        $data =
-            [
-                "NPM" => $req->NPM,
-                "NAMA" => $req->NAMA,
-                "TELEPON" => $req->TELEPON,
-                "JURUSAN" => $req->JURUSAN,
-            ];
-        //SET Nilai ID
-
-
-        //cek npm tersedia atau tidak 
-        //jika data tersedia
-        if (count($this->model->checkUpdateData($data["NPM"], $id)) == 0) {
-            //Lakukan Perubahan Data  
-            //Buat Status Pesan
-            $this->model->updateData($data["NPM"], $data["NAMA"], $data["TELEPON"], $data["JURUSAN"],$id );
+        // ambil data input
+        $data = [
+            "npm" => $req->npm,
+            "nama" => $req->nama,
+            "telepone" => $req->telepone,
+            "jurusan" => $req->jurusan
+        ];        
+        // lakukan pengecekan apakah data "npm" yang diisi sudah pernah tersimpan/belum di database
+        
+        // jika data tersedia
+        if(count($this->model->checkUpdateData($data["npm"], $id)) == 0)
+        {
+            // lakukan perubahan data
+            // panggil model fungsi updateData dari model "Mmahasiswa"
+            $this->model->updateData($data["npm"],$data["nama"],$data["telepone"],$data["jurusan"],$id);
             $status = 1;
-            $messege = "Data Berhasil Di Ubah";
+            $message = "Data Berhasil di Ubah";
         }
-        //jika data tersedia
-        else {
-            //Buat Status Pesan
+        // jika data tidak tersedia
+        else
+        {
             $status = 0;
-            $messege = "Data Tidak Di Ubah!!!";
+            $message = "Data Gagal di Ubah (NPM Tidah di Temukan !)";
         }
-        return response(["status" => $status, "message" => $messege], http_response_code());
+        // kembalikan nilai variabel "result" kedalam object "mahasiswa"
+    return response(["status"=> $status, "message" => $message], http_response_code());
     }
 }

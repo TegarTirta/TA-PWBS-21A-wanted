@@ -11,7 +11,7 @@ import "tailwindcss/tailwind.css";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'View Data Mahasiswa',
+  title: 'Data Siswa Baru',
 }
 
 export default function MainLayout({

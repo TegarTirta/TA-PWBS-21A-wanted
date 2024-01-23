@@ -15,125 +15,97 @@ class Mmahasiswa extends Model
     {
         //tampilkan data dari "tb_mahasiswa"
         $query = DB::table('tb_mahasiswa')
-            ->select(
-                "ID AS id_mahasiswa",
-                "NPM AS npm_mahasiswa",
-                "NAMA AS nama_jurusan",
-                "TELEPON AS telpon_mahasiswa",
-                "JURUSAN AS jurusan_mahasiswa"
-            )
-            ->orderBy("ID")
-            ->get();
+                ->select("id AS id_mahasiswa","npm AS npm_mahasiswa","nama AS nama_mahasiswa","telepone AS telepone_mahasiswa",
+                "jurusan AS jurusan_mahasiswa")
+                ->orderBy("id")
+                ->get();
         //mengirim hasil variabel "query" ke controller "mahasiswa"
         return $query;
     }
-
-    //buat fungsi pencarian data
+    // buat fungsi untuk pencarian data
     function searchData($keyword)
     {
-        //tampilkan data dari "tb_mahasiswa"
-        $query = DB::table('tb_mahasiswa')
-            ->select(
-                "ID AS id_mahasiswa",
-                "NPM AS npm_mahasiswa",
-                "NAMA AS nama_mahasiswa",
-                "TELEPON AS telpon_mahasiswa",
-                "JURUSAN AS jurusan_mahasiswa"
-            )
-            ->where("NPM", "$keyword")
-            // ->orWhere("nama","LIKE","%$keyword%")
-            // ->orWhereRaw("REPLACE(nama,' ','') LIKE REPLACE('%$keyword%',' ','')")
-            ->orWhere(DB::raw("REPLACE(NAMA,' ','')"), "LIKE", DB::raw("REPLACE('%$keyword%',' ','')"))
-            ->orWhere("TELEPON", "$keyword")
-            ->orWhere("JURUSAN", "LIKE", "%$keyword%")
-            ->orderBy("ID")
-            ->get();
+         //tampilkan data dari "tb_mahasiswa"
+         $query = DB::table('tb_mahasiswa')
+         ->select("id AS id_mahasiswa","npm AS npm_mahasiswa","nama AS nama_mahasiswa","telepone AS telepone_mahasiswa",
+         "jurusan AS jurusan_mahasiswa")
+        ->where("npm","$keyword")
+        //->orWhere("nama","LIKE","%$keyword%")
+        ->orWhere(DB::raw("REPLACE(nama,' ','')"),"LIKE",DB::RAW("REPLACE('%$keyword%',' ','')"))
+        //->orWhereRaw("REPLACE(nama,' ','') LIKE REPLACE('%$keyword%',' ','')")
+        ->orWhere("telepone","$keyword")
+        ->orWhere("jurusan","LIKE","%$keyword%")
+         ->orderBy("id")
+         ->get();
         //mengirim hasil variabel "query" ke controller "mahasiswa"
         return $query;
     }
-
-    //buat fungsi detail data
+    // buat fungsi detail data
     function detailData($id)
     {
-        //tampilkan data dari "tb_mahasiswa"
-        $query = DB::table('tb_mahasiswa')
-            ->select(
-                "ID AS id_mahasiswa",
-                "NPM AS npm_mahasiswa",
-                "NAMA AS nama_mahasiswa",
-                "TELEPON AS telpon_mahasiswa",
-                "JURUSAN AS jurusan_mahasiswa"
-            )
-            // ->where(DB::raw("TO_BASE64(npm)"),"$id")
-            ->where(DB::raw("TO_BASE64(MD5(NPM))"), "$id")
-
-            ->get();
+         //tampilkan data dari "tb_mahasiswa"
+         $query = DB::table('tb_mahasiswa')
+         ->select("id AS id_mahasiswa","npm AS npm_mahasiswa","nama AS nama_mahasiswa","telepone AS telepone_mahasiswa",
+         "jurusan AS jurusan_mahasiswa")
+       // ->where(DB::RAW("TO_BASE64(npm)") ,"$id")
+       ->where(DB::RAW("TO_BASE64(MD5(npm))") ,"$id")
+         ->get();
         //mengirim hasil variabel "query" ke controller "mahasiswa"
         return $query;
     }
-
-    // Buat Funsi Untuk Hapus Data 
-    function deleteData($id)
+    // buat fungsi untuk hapus data
+    function DeleteData()
     {
+        // perintah untu hapus data
         DB::table("tb_mahasiswa")
-            ->where(DB::raw("TO_BASE64(MD5(NPM))"), "$id")
-            ->delete();
+        ->where(DB::RAW("TO_BASE64(MD5(npm))") ,"$id")
+        ->delete();
     }
-
-    // Buat Fungsi Untuk Save Data
-    function saveData($NPM, $NAMA, $TELEPON, $JURUSAN)
+    // buat fungsi untuk simpan data
+    function saveData($npm,$nama,$telepone,$jurusan)
     {
-        //Ambil Data 
-        // "NPM" = Nama Field 
-        //"$NPM" = NAMA PARAMETER
+        // ambil data
+        // "npm" = nama field
+        // "$npm" = nama parameter
         $result = [
-            "NPM" => $NPM,
-            "NAMA" => $NAMA,
-            "JURUSAN" => $JURUSAN,
-            "TELEPON" => $TELEPON,
+            "npm" => $npm,
+            "nama" => $nama,
+            "telepone" => $telepone,
+            "jurusan" => $jurusan
         ];
-        //Perintah Simpan Data 
-        DB::tabel("tb_mahasiswa")
-            ->insert($result);
+        // perintah simpan data
+        DB::table("tb_mahasiswa")
+        ->insert($result);
+        
     }
-
-    function checkUpdateData($NPM, $id, )
+    function checkUpdateData($npm,$id)
     {
         //tampilkan data dari "tb_mahasiswa"
         $query = DB::table('tb_mahasiswa')
-            ->select(
-                "ID AS id_mahasiswa",
-                "NPM AS npm_mahasiswa",
-                "NAMA AS nama_mahasiswa",
-                "TELEPON AS telpon_mahasiswa",
-                "JURUSAN AS jurusan_mahasiswa"
-            )
-
-            // ->orWhere("nama","LIKE","%$keyword%")
-            // ->orWhereRaw("REPLACE(nama,' ','') LIKE REPLACE('%$keyword%',' ','')")
-            ->where(DB::raw("TO_BASE64(MD5(NPM))"), "!=", "$id")
-            ->where("NPM", "$NPM")
-            ->get();
-        //mengirim hasil variabel "query" ke controller "mahasiswa"
-        return $query;
+        ->select("id AS id_mahasiswa","npm AS npm_mahasiswa","nama AS nama_mahasiswa","telepone AS telepone_mahasiswa",
+        "jurusan AS jurusan_mahasiswa")
+      // ->where(DB::RAW("TO_BASE64(npm)") ,"$id")
+      ->where(DB::RAW("TO_BASE64(MD5(npm))") ,"!=","$id")
+      -> where("npm","$npm")
+        ->get();
+       //mengirim hasil variabel "query" ke controller "mahasiswa"
+       return $query;
     }
-    // Fungsi Update Data 
-    function updateData($NPM, $NAMA, $TELEPON, $JURUSAN, $id)
+    // fungsi untuk ubah data
+    function updateData($npm, $nama, $telepone, $jurusan, $id)
     {
-        //Ambil Data 
-        //"NPM" = Nama Field 
-        //"$NPM" = NAMA PARAMETER
+        // ambil data
+        // "npm" = nama field
+        // "$npm" = nama parameter
         $result = [
-            "NPM" => $NPM,
-            "NAMA" => $NAMA,
-            "JURUSAN" => $JURUSAN,
-            "TELEPON" => $TELEPON,
+            "npm" => $npm,
+            "nama" => $nama,
+            "telepone" => $telepone,
+            "jurusan" => $jurusan
         ];
-
+        // perintah untu ubah data
         DB::table("tb_mahasiswa")
-        ->where(DB::raw("TO_BASE64(MD5(NPM))"), "$id")
+        ->where(DB::RAW("TO_BASE64(MD5(npm))") ,"$id")
         ->update($result);
-
     }
-
 }
